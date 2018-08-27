@@ -1,0 +1,36 @@
+{
+  "name": "solution-analyzer",
+  "version": "0.1.0",
+  "description": "A library for analyzing Rubik's Cube solutions.",
+  "keywords": [
+    "Rubik's Cube",
+    "solution",
+    "speedcubing",
+    "cubing"
+  ],
+  "author": "Jonatan Kłosko",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jonatanklosko/solution-analyzer.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jonatanklosko/solution-analyzer/issues"
+  },
+  "homepage": "https://github.com/jonatanklosko/solution-analyzer",
+  "main": "dist/solution-analyzer.cjs.js",
+  "module": "dist/solution-analyzer.esm.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-rc.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.0.0-rc.4",
+    "@babel/preset-env": "^7.0.0-rc.4",
+    "rollup": "^0.65.0",
+    "rollup-plugin-babel": "^4.0.0-beta.8"
+  }
+}

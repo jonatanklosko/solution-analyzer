@@ -1,0 +1,7 @@
+# NPM dependencies
+/node_modules
+
+# Production
+/dist
+
+npm-debug.log*
