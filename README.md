@@ -1,4 +1,4 @@
-# Solution Analyzer [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jonatanklosko/solution-analyzer/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/solution-analyzer.svg)](https://www.npmjs.com/package/solution-analyzer) [![Try it on RunKit](https://badge.runkitcdn.com/solution-analyzer.svg)](https://npm.runkit.com/solution-analyzer)
+# Solution Analyzer [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jonatanklosko/solution-analyzer/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/solution-analyzer.svg)](https://www.npmjs.com/package/solution-analyzer) [![Build Status](https://travis-ci.org/jonatanklosko/solution-analyzer.svg?branch=master)](https://travis-ci.org/jonatanklosko/solution-analyzer) [![Try it on RunKit](https://badge.runkitcdn.com/solution-analyzer.svg)](https://npm.runkit.com/solution-analyzer)
 A library for analyzing Rubik's Cube solutions.
 
 ## Installation
