@@ -4,7 +4,10 @@ import {
   solvedSlots,
   crossBottomEdgesOriented,
   sideOriented,
-  sideSolved
+  sideSolved,
+  lrSquares,
+  ulurSolved,
+  uCornersSolved
 } from '../src/cube-analyzers';
 
 import { newCube, applyMoves } from '../src/cube';
@@ -91,5 +94,30 @@ describe('sideSolved', () => {
     const predicate = sticker =>
       ['ULB', 'UB', 'U', 'UL', 'UFL'].includes(sticker);
     expect(sideSolved(cubeAfter("R U R' F' R U R' U' R' F R2 U' R' U'"), 'U', predicate)).toBe(true);
+  });
+});
+
+describe('lrSquares', () => {
+  test('returns corners on left and right sides with adjacent edges solved', () => {
+    expect(lrSquares(cubeAfter('R U2 R'))).toEqual([['LFD', 'LDB'], ['RDF', 'RFU']]);
+    expect(lrSquares(cubeAfter("U2 L' R U2 R'"))).toEqual([['LFD'], ['RBD']]);
+  });
+});
+
+describe('ulurSolved', () => {
+  test('returns true if left and right upper 1x1x3 blocks are solved', () => {
+    expect(ulurSolved(cubeAfter("M2' U"))).toBe(true);
+    expect(ulurSolved(cubeAfter("U2 M U2 M U"))).toBe(true);
+  });
+});
+
+describe('uCornersSolved', () => {
+  test('returns true if all corners of the U side are solved relatively to each other', () => {
+    expect(uCornersSolved(cubeAfter("M2 U M' U"))).toBe(true);
+  });
+
+  test('returns false if not all corners of the U side are solved relatively to each other', () => {
+    expect(uCornersSolved(cubeAfter("R U R' U R U2' R'"))).toBe(false);
+    expect(uCornersSolved(cubeAfter("R U R' F' R U R' U' R' F R2 U' R'"))).toBe(false);
   });
 });

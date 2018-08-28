@@ -119,7 +119,7 @@ export const ulurSolved = cube =>
   );
 
 export const uCornersSolved = cube =>
-  sameValueBySide(cube, SIDES['U'].filter(isCornerSticker));
+  sameValueBySide(cube, flatMap(SIDES['U'].filter(isCornerSticker), elementStickers));
 
 /* ZZ-specific */
 
