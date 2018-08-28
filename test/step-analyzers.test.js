@@ -77,6 +77,34 @@ describe('labelRouxStep', () => {
 });
 
 describe('labelZZStep', () => {
-  test('', () => {
+  const scramble = "L2 B2 U' B2 U2 B2 R2 F2 D F2 R2 F' D B L2 F D L2 R U2 R'";
+  const eoLine = scramble + "x2 y' F L2 F' L D";
+  const lSquare = eoLine + "R U L' U2 L U' L2 U'";
+  const lBlock = lSquare + "L2 U' L'";
+  const rSquare = lBlock + "U R' U' R2 U' R U2";
+  const rBlock = rSquare + "R2 U' R";
+  const ocll = rBlock + "F' r U R' U' L' U l";
+  const cpll = ocll + "x R' U R' D2 R U' R' D2 R2 x'";
+  const epll = cpll + "M2' U M' U2 M U M2'";
+  const auf = epll + "U2";
+
+  [ { previous: scramble, next: eoLine,  expectedLabel: 'EOLine' },
+    { previous: eoLine,   next: lSquare, expectedLabel: 'LSquare' },
+    { previous: lSquare,  next: lBlock,  expectedLabel: 'LBlock'  },
+    { previous: lBlock,   next: rSquare, expectedLabel: 'RSquare' },
+    { previous: rSquare,  next: rBlock,  expectedLabel: 'RBlock'  },
+    { previous: rBlock,   next: ocll,    expectedLabel: 'OCLL'    },
+    { previous: rBlock,   next: cpll,    expectedLabel: 'COLL'    },
+    { previous: ocll,     next: cpll,    expectedLabel: 'CPLL'    },
+    { previous: cpll,     next: epll,    expectedLabel: 'EPLL'    },
+    { previous: ocll,     next: epll,    expectedLabel: 'PLL'     },
+    { previous: rBlock,   next: epll,    expectedLabel: 'ZBLL'    },
+    { previous: epll,     next: auf,     expectedLabel: 'AUF'     }
+  ].forEach(({ previous, next, expectedLabel }) => {
+    test(`recognises ${expectedLabel}`, () => {
+      expect(
+        labelZZStep(cubeAfter(previous), cubeAfter(next))
+      ).toBe(expectedLabel);
+    });
   });
 });
