@@ -1,4 +1,4 @@
-# Solution Analyzer
+# Solution Analyzer [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/jonatanklosko/solution-analyzer/blob/master/LICENSE) [![npm version](https://img.shields.io/npm/v/solution-analyzer.svg)](https://www.npmjs.com/package/solution-analyzer) [![Try it on RunKit](https://badge.runkitcdn.com/solution-analyzer.svg)](https://npm.runkit.com/solution-analyzer)
 A library for analyzing Rubik's Cube solutions.
 
 ## Installation
@@ -30,7 +30,7 @@ analyzeSolution(...);
 | `solution` | `string` | full or partial solution moves sequence |
 | `method`   | `string` | a speedsolving method name, either of: CFOP, Roux, ZZ. |
 
-Returns an object representing the solution. Example:
+Returns an object representing the solution. Example: [![Try it on RunKit](https://badge.runkitcdn.com/solution-analyzer.svg)](https://runkit.com/jonatanklosko/solution-analyzer-example-usage)
 ```js
 analyzeSolution(
   "B2 L2 D' R2 D' L2 R2 D2 B2 D' R' F2 D R F D' R D' B' L",
