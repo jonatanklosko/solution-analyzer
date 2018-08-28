@@ -11,15 +11,11 @@ import {
   eoLine,
   lrF2lSquares
 } from '../src/cube-analyzers';
-
-import { newCube, applyMoves } from '../src/cube';
-import { stringToMoves } from '../src/moves';
-
-const cubeAfter = movesString => applyMoves(newCube(), stringToMoves(movesString));
+import { cubeAfter } from './test-utils';
 
 describe('isSolved', () => {
   test('returns true if the cube is solved regardless rotations', () => {
-    expect(isSolved(newCube())).toBe(true);
+    expect(isSolved(cubeAfter(''))).toBe(true);
     expect(isSolved(cubeAfter("R U R' U' y2 U L U' L'"))).toBe(true);
   });
 
