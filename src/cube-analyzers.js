@@ -69,7 +69,6 @@ export const solvedSlots = cube => {
     : { side: null, count: 0 };
 };
 
-/* Returns true if in any position with cross at the bottom edges are oriented. */
 export const crossBottomEdgesOriented = (cube, crossSide) => {
   const [, ...perpendicularSides] = SIDES[crossSide].find(isCornerSticker);
   return perpendicularSides.some(side => edgesOriented(cube, crossSide, side));
