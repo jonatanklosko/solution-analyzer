@@ -12,8 +12,6 @@ const isStickerSolved = (cube, sticker) =>
 export const isSolved = cube =>
   Object.keys(cube).every(sticker => isStickerSolved(cube, sticker));
 
-const isCenterSticker = sticker => sticker.length === 1;
-
 const isEdgeSticker = sticker => sticker.length === 2;
 
 const isCornerSticker = sticker => sticker.length === 3;

@@ -1,6 +1,9 @@
 # NPM dependencies
 /node_modules
 
+# Code coverage report
+/coverage
+
 # Production
 /dist
 
