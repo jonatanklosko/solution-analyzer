@@ -46,7 +46,33 @@ describe('labelCFOPStep', () => {
 });
 
 describe('labelRouxStep', () => {
-  test('', () => {
+  const scramble = "U' L F2 L2 U2 R' B2 F2 D2 B2 R2 U' F2 L' R' B' F' L D' L";
+  const lSquare = scramble + "x' z' R' F2 U B";
+  const lBlock = lSquare + "U' M r' F";
+  const rSquare = lBlock + "r U R U' M' U R";
+  const rBlock = rSquare + "U' M U' r U' r'";
+  const cmll = rBlock + "U L' U R U' L U R'";
+  const eo = cmll + "M' U' M U M' U M'";
+  const ulur = eo + "U2 M2";
+  const ep = ulur + "U E2 M E2 M";
+
+  [ { previous: scramble, next: lSquare, expectedLabel: 'LSquare'    },
+    { previous: lSquare,  next: lBlock,  expectedLabel: 'LBlock'     },
+    { previous: lBlock,   next: rSquare, expectedLabel: 'RSquare'    },
+    { previous: rSquare,  next: rBlock,  expectedLabel: 'RBlock'     },
+    { previous: rBlock,   next: cmll,    expectedLabel: 'CMLL'       },
+    { previous: rBlock,   next: eo,      expectedLabel: 'CMLL + EO'  },
+    { previous: cmll,     next: eo,      expectedLabel: 'EO'         },
+    { previous: cmll,     next: ulur,    expectedLabel: 'EO + UL/UR' },
+    { previous: eo,       next: ulur,    expectedLabel: 'UL/UR'      },
+    { previous: ulur,     next: ep,      expectedLabel: 'EP'         },
+    { previous: eo,       next: ep,      expectedLabel: 'LSE'        },
+  ].forEach(({ previous, next, expectedLabel }) => {
+    test(`recognises ${expectedLabel}`, () => {
+      expect(
+        labelRouxStep(cubeAfter(previous), cubeAfter(next))
+      ).toBe(expectedLabel);
+    });
   });
 });
 
