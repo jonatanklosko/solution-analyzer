@@ -8,12 +8,6 @@ export default {
     { file: pkg.module, format: 'esm' },
   ],
   plugins: [
-    babel({
-      exclude: 'node_modules/**',
-      presets: [
-        ['@babel/preset-env', { modules: false }]
-      ],
-      plugins: ['@babel/plugin-proposal-object-rest-spread']
-    })
+    babel({ exclude: 'node_modules/**' })
   ]
 };
