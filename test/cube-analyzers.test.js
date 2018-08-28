@@ -7,7 +7,9 @@ import {
   sideSolved,
   lrSquares,
   ulurSolved,
-  uCornersSolved
+  uCornersSolved,
+  eoLine,
+  lrF2lSquares
 } from '../src/cube-analyzers';
 
 import { newCube, applyMoves } from '../src/cube';
@@ -119,5 +121,28 @@ describe('uCornersSolved', () => {
   test('returns false if not all corners of the U side are solved relatively to each other', () => {
     expect(uCornersSolved(cubeAfter("R U R' U R U2' R'"))).toBe(false);
     expect(uCornersSolved(cubeAfter("R U R' F' R U R' U' R' F R2 U' R'"))).toBe(false);
+  });
+});
+
+describe('eoLine', () => {
+  test('returns true if EO Line is done', () => {
+    expect(eoLine(cubeAfter("R L U R2 L U R"))).toBe(true);
+    expect(eoLine(cubeAfter("F2 R L2 U R U' F2"))).toBe(true);
+  });
+
+  test('returns false if edges are not oriented', () => {
+    expect(eoLine(cubeAfter("F R' F' R"))).toBe(false);
+  });
+
+  test('returns false if either DF or DB is not solved', () => {
+    expect(eoLine(cubeAfter("F2"))).toBe(false);
+    expect(eoLine(cubeAfter("B"))).toBe(false);
+  });
+});
+
+describe('lrF2lSquares', () => {
+  test('returns corners on left and right sides with adjacent edges solved that belong to first two layers', () => {
+    expect(lrF2lSquares(cubeAfter('R U2 R L2'))).toEqual([['LUF', 'LBU'], ['RFU']]);
+    expect(lrF2lSquares(cubeAfter("R2 U L' U2 R"))).toEqual([['LFD'], []]);
   });
 });
