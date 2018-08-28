@@ -64,7 +64,7 @@ export const applyMove = (cube, move) => {
       double ? doubleMove(partialMove) : (anticlockwise ? invertMove(partialMove) : partialMove)
     ));
   } else {
-    throw new Error(`Incorrect move: ${move}`);
+    throw new Error(`Invalid move: ${move}`);
   }
 };
 
