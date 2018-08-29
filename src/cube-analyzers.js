@@ -93,9 +93,6 @@ export const sideSolved = (cube, side, stickerPredicate = () => true) =>
 export const sideCornersSolved = (cube, side) =>
   sideSolved(cube, side, isCornerSticker);
 
-export const sideEdgesSolved = (cube, side) =>
-  sideSolved(cube, side, isEdgeSticker);
-
 /* Roux-specific */
 
 export const lrSquares = cube =>

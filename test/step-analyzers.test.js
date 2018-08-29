@@ -13,6 +13,9 @@ describe('labelCFOPStep', () => {
   const cpll = ocll + "y' x R2' D2 R U R' D2 R U' R x'";
   const epll = cpll + "M2' U' M' U2 M U' M2'";
   const auf = epll + "U2";
+  /* Alternative last pair with MGLS. */
+  const els = thirdPair + "F R' F' R";
+  const cls = els + "U2 R U2' R' U' R U R' U R U R'";
 
   [ { previous: scramble,   next: cross,      expectedLabel: 'cross'           },
     { previous: scramble,   next: firstPair,  expectedLabel: 'xcross'          },
@@ -25,6 +28,8 @@ describe('labelCFOPStep', () => {
     { previous: firstPair,  next: thirdPair,  expectedLabel: '2nd + 3rd pair'  },
     { previous: thirdPair,  next: eoll,       expectedLabel: '4th pair / EOLS' },
     { previous: thirdPair,  next: ocll,       expectedLabel: '4th pair / OLS'  },
+    { previous: thirdPair,  next: els,        expectedLabel: 'ELS'             },
+    { previous: els,        next: cls,        expectedLabel: '4th pair / CLS'  },
     { previous: fourthPair, next: eoll,       expectedLabel: 'EOLL'            },
     { previous: eoll,       next: ocll,       expectedLabel: 'OCLL'            },
     { previous: fourthPair, next: ocll,       expectedLabel: 'OLL'             },
@@ -66,7 +71,7 @@ describe('labelRouxStep', () => {
     { previous: cmll,     next: ulur,    expectedLabel: 'EO + UL/UR' },
     { previous: eo,       next: ulur,    expectedLabel: 'UL/UR'      },
     { previous: ulur,     next: ep,      expectedLabel: 'EP'         },
-    { previous: eo,       next: ep,      expectedLabel: 'LSE'        },
+    { previous: eo,       next: ep,      expectedLabel: 'LSE'        }
   ].forEach(({ previous, next, expectedLabel }) => {
     test(`recognises ${expectedLabel}`, () => {
       expect(
