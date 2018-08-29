@@ -4,4 +4,6 @@ node_js:
 cache:
   directories:
     - "node_modules"
-script: npm test
+script:
+  - npm test
+  - jest --coverage --coverageReporters=text-lcov | coveralls
