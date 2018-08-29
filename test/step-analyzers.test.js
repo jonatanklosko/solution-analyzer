@@ -1,6 +1,14 @@
 import { labelCFOPStep, labelRouxStep, labelZZStep } from '../src/step-analyzers';
 import { cubeAfter } from './test-utils';
 
+const testStepRecognition = labelFn => ({ previous, next, expectedLabel }) => {
+  test(`recognises ${expectedLabel}`, () => {
+    expect(
+      labelFn(cubeAfter(previous), cubeAfter(next))
+    ).toBe(expectedLabel);
+  });
+};
+
 describe('labelCFOPStep', () => {
   const scramble = "D L2 F2 D' B2 D' F2 D B2 D2 L2 F D2 U L B' D' U' F' D";
   const cross = scramble + "U' R2' B' D F D'";
@@ -41,13 +49,7 @@ describe('labelCFOPStep', () => {
     { previous: eoll,       next: epll,       expectedLabel: 'ZBLL'            },
     { previous: fourthPair, next: epll,       expectedLabel: '1LLL'            },
     { previous: epll,       next: auf,        expectedLabel: 'AUF'             }
-  ].forEach(({ previous, next, expectedLabel }) => {
-    test(`recognises ${expectedLabel}`, () => {
-      expect(
-        labelCFOPStep(cubeAfter(previous), cubeAfter(next))
-      ).toBe(expectedLabel);
-    });
-  });
+  ].forEach(testStepRecognition(labelCFOPStep));
 });
 
 describe('labelRouxStep', () => {
@@ -72,13 +74,7 @@ describe('labelRouxStep', () => {
     { previous: eo,       next: ulur,    expectedLabel: 'UL/UR'      },
     { previous: ulur,     next: ep,      expectedLabel: 'EP'         },
     { previous: eo,       next: ep,      expectedLabel: 'LSE'        }
-  ].forEach(({ previous, next, expectedLabel }) => {
-    test(`recognises ${expectedLabel}`, () => {
-      expect(
-        labelRouxStep(cubeAfter(previous), cubeAfter(next))
-      ).toBe(expectedLabel);
-    });
-  });
+  ].forEach(testStepRecognition(labelRouxStep));
 });
 
 describe('labelZZStep', () => {
@@ -105,11 +101,5 @@ describe('labelZZStep', () => {
     { previous: ocll,     next: epll,    expectedLabel: 'PLL'     },
     { previous: rBlock,   next: epll,    expectedLabel: 'ZBLL'    },
     { previous: epll,     next: auf,     expectedLabel: 'AUF'     }
-  ].forEach(({ previous, next, expectedLabel }) => {
-    test(`recognises ${expectedLabel}`, () => {
-      expect(
-        labelZZStep(cubeAfter(previous), cubeAfter(next))
-      ).toBe(expectedLabel);
-    });
-  });
+  ].forEach(testStepRecognition(labelZZStep));
 });

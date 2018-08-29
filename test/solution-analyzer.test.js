@@ -65,7 +65,7 @@ describe('analyzeSolution', () => {
     });
   });
 
-  test('handles partial solution', () => {
+  test('handles a partial solution', () => {
     expect(
       analyzeSolution(
         "U2 B2 U' R2 U2 L F2 R' D2 U L2 R D' U R' B' F R'",
@@ -79,6 +79,15 @@ describe('analyzeSolution', () => {
         { label: 'cross', moves: ["r", "U'", "U'", "x'", "L", "R'", "D"] },
         { label: '1st pair', moves: ["y", "L'", "U", "L"] },
         { label: null, moves: ["D'", "R", "U"] }
+      ]
+    });
+  });
+
+  test('handles a partial solution including just rotations', () => {
+    expect(analyzeSolution('R', 'x2 y', 'CFOP')).toEqual({
+      solved: false,
+      steps: [
+        { label: 'inspection', moves: ["x2", "y"] }
       ]
     });
   });
