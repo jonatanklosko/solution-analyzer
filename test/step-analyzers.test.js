@@ -88,7 +88,7 @@ describe('labelZZStep', () => {
   const epll = cpll + "M2' U M' U2 M U M2'";
   const auf = epll + "U2";
 
-  [ { previous: scramble, next: eoLine,  expectedLabel: 'EOLine' },
+  [ { previous: scramble, next: eoLine,  expectedLabel: 'EOLine'  },
     { previous: eoLine,   next: lSquare, expectedLabel: 'LSquare' },
     { previous: lSquare,  next: lBlock,  expectedLabel: 'LBlock'  },
     { previous: lBlock,   next: rSquare, expectedLabel: 'RSquare' },
