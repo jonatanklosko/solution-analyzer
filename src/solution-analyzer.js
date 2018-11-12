@@ -22,11 +22,7 @@ const analyzeSolutionWith = (scramble, solution, labelStep) => {
 };
 
 export const analyzeSolution = (scramble, solution, method) => {
-  if (stringToMoves(scramble).length === 0) {
-    throw new TypeError('Scramble must include at least one valid move.');
-  } else if (stringToMoves(solution).length === 0) {
-    throw new TypeError('Solution must include at least one valid move.');
-  } else if (!method) {
+  if (!method) {
     throw new TypeError('Method is missing.');
   }
 

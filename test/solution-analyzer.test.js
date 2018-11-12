@@ -92,21 +92,6 @@ describe('analyzeSolution', () => {
     });
   });
 
-  test('throws when an empty scramble is given', () => {
-    expect(() => analyzeSolution('', 'R', 'CFOP')).toThrow(
-      'Scramble must include at least one valid move.'
-    );
-    expect(() => analyzeSolution('W2', 'R', 'CFOP')).toThrow(
-      'Scramble must include at least one valid move.'
-    );
-  });
-
-  test('throws when an empty solution  is given', () => {
-    expect(() => analyzeSolution('R', '', 'Roux')).toThrow(
-      'Solution must include at least one valid move.'
-    );
-  });
-
   test('throws when no method is given', () => {
     expect(() => analyzeSolution("R", "R'")).toThrow("Method is missing");
   });
