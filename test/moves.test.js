@@ -18,6 +18,14 @@ describe('stringToMoves', () => {
   test("attaches ', 2 and w signs to their corresponding moves regerdless white characters", () => {
     expect(stringToMoves("R  'u 2 L wM2'")).toEqual(["R'", 'u2', 'Lw', "M2'"]);
   });
+
+  test('replaces backticks with apostrophes', () => {
+    expect(stringToMoves("R` F2 L2` y`")).toEqual(["R'", 'F2', "L2'", "y'"]);
+  });
+
+  test('capitalizes', () => {
+    expect(stringToMoves("R X F Z' Y l")).toEqual(['R', 'x', 'F', "z'", 'y', 'l']);
+  });
 });
 
 describe('invertMove', () => {
