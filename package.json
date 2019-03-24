@@ -1,6 +1,6 @@
 {
   "name": "solution-analyzer",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "A library for analyzing Rubik's Cube solutions.",
   "keywords": [
     "Rubik's Cube",
